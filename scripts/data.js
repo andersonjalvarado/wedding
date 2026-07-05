@@ -80,7 +80,7 @@ export const WEDDING = {
 
   /* --- RSVP --- */
   rsvp: {
-    formspreeId: "XXXXXXXX",
+    formspreeId: "xpqgbleb",
     deadline:    "5 de agosto, 2026",
     maxGuests:   2,
   },
