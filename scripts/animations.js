@@ -29,17 +29,32 @@ function initReveal() {
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  /* Adornos de esquina: toggle en entrada/salida para efecto de aparecer/desaparecer al scrollear */
+  /* Adornos de esquina: toggle en entrada/salida para efecto de aparecer/desaparecer al scrollear.
+     Umbral 0 y rootMargin generoso para que aparezcan también en pantallas móviles. */
   const cornerObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       entry.target.classList.toggle('is-visible', entry.isIntersecting);
     });
   }, {
-    threshold: 0.05,
-    rootMargin: '-40px 0px -40px 0px',
+    threshold: 0,
+    rootMargin: '50px 0px 50px 0px',
   });
 
-  document.querySelectorAll('.reveal-corner').forEach(el => cornerObserver.observe(el));
+  const corners = document.querySelectorAll('.reveal-corner');
+  corners.forEach(el => cornerObserver.observe(el));
+
+  /* Fallback: si alguno queda oculto tras la primera pasada (móvil con transiciones lentas
+     o carga tardía de imágenes), lo hacemos visible cuando la imagen termine de cargar
+     y ya esté dentro del viewport. */
+  corners.forEach(img => {
+    const reveal = () => {
+      const rect = img.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) img.classList.add('is-visible');
+    };
+    if (img.complete) reveal();
+    else img.addEventListener('load', reveal, { once: true });
+  });
 }
 
 /* ---------- Splitting.js para el título hero ---------- */
