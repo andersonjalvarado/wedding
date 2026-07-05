@@ -68,7 +68,7 @@ export const WEDDING = {
 
   /* --- Frase bíblica --- */
   bible: {
-    verse: "El amor es paciente; es benigno, sin envidia envidia; el amor no es jactancioso, no se engríe; no hace nada que no sea conveniente, no busca lo suyo, no se irrita, no piensa mal; no se regocija en la injusticia, antes se regocija con la verdad; todo lo sobrelleva, todo lo cree, todo lo espera, todo lo sporta.",
+    verse: "El amor es paciente; es benigno, sin envidia envidia; el amor no es jactancioso, no se engríe; no hace nada que no sea conveniente, no busca lo suyo, no se irrita, no piensa mal; no se regocija en la injusticia, antes se regocija con la verdad; todo lo sobrelleva, todo lo cree, todo lo espera, todo lo soporta.",
     reference: "1 Corintios 13:4-7",
   },
 
