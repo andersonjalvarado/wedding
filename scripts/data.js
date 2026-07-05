@@ -36,11 +36,18 @@ export const WEDDING = {
     /* --- note2:    "La recepción iniciará una hora después de la ceremonia.",--- */
   },
 
-  /* --- Recepción --- */
+  /* --- Recepción 
   reception: {
     name:    "Casa Residencial Villa del Prado",
     address: "Cra 48a #170-39, Bogotá, Colombia",
     mapsUrl: "https://maps.app.goo.gl/Yirqr8RKcAoZXyBQ7?g_st=aw",
+    time:    "19:00 hrs",
+  },--- */
+
+  reception: {
+    name:    "Bosques de la Alameda II",
+    address: "Carrera 17B #175-77, Bogotá, Cundinamarca",
+    mapsUrl: "https://maps.app.goo.gl/NmstR7o3kjUj6WCJ9?g_st=aw",
     time:    "19:00 hrs",
   },
 
