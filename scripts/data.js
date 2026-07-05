@@ -104,6 +104,13 @@ export const WEDDING = {
       "assets/images/gallery/04.jpg",
       "assets/images/gallery/05.jpg",
       "assets/images/gallery/06.jpg",
+      "assets/images/gallery/07.jpg",
+      "assets/images/gallery/08.jpg",
+      "assets/images/gallery/09.jpg",
+      "assets/images/gallery/10.jpg",
+      "assets/images/gallery/11.jpg",
+      "assets/images/gallery/12.jpg",
+      "assets/images/gallery/13.jpg",
     ],
   },
 
