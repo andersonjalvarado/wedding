@@ -1,0 +1,180 @@
+/* ============================================================
+   ANIMATIONS — keyframes, reveal classes, motion tokens.
+   Todas las animaciones respetan prefers-reduced-motion.
+   ============================================================ */
+
+/* --- Estado inicial de elementos animados --- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.reveal.reveal--left  { transform: translateX(-3rem); }
+.reveal.reveal--right { transform: translateX(3rem); }
+.reveal.reveal--scale { transform: scale(0.94); }
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Splitting.js: chars --- */
+
+.splitting .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em);
+  will-change: opacity, transform;
+}
+
+.splitting.is-visible .char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Keyframes --- */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Reveal general */
+  .reveal {
+    transition:
+      opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Splitting chars con stagger via CSS var(--char-index) */
+  .splitting .char {
+    transition:
+      opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--char-index) * 0.03s),
+      transform 0.55s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--char-index) * 0.03s);
+  }
+
+  /* Hero overlay fade-in */
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: scale(1.04); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* Línea de timeline crece hacia abajo */
+  @keyframes lineGrow {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+  }
+
+  /* Pulso sutil para el countdown */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.03); }
+  }
+
+  /* Shimmer para placeholders de imagen */
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+  }
+
+  /* Entrada suave para el nav */
+  @keyframes navSlideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+  }
+
+  /* Fade desde abajo para tarjetas del formulario */
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(1.5rem); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Giro del icono de dark mode toggle */
+  @keyframes spinOnce {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Flote decorativo para elementos del hero */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  /* Latido del corazón sobre el día de la boda */
+  @keyframes heart-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+  }
+}
+
+/* --- Clases de utilidad de animación --- */
+
+.animate-hero-bg {
+  animation: heroFadeIn 1.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-nav {
+  animation: navSlideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-number {
+  animation: pulse 0.3s ease-in-out;
+}
+
+.animate-spin-once {
+  animation: spinOnce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* --- Shimmer placeholder de imagen --- */
+
+.img-placeholder {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface)   0%,
+    var(--color-accent)   50%,
+    var(--color-surface) 100%
+  );
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .img-placeholder {
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+}
+
+/* --- Delays para stagger manual --- */
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+.delay-5 { transition-delay: 0.5s !important; }
+.delay-6 { transition-delay: 0.6s !important; }
+
+/* --- Timeline line --- */
+.timeline__line {
+  transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .timeline__line.is-visible {
+    animation: lineGrow 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+}
+
+/* --- Reducción de movimiento: estado visible inmediato --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .splitting .char {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .img-placeholder {
+    animation: none;
+  }
+}
