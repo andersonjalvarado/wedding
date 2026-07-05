@@ -106,7 +106,7 @@ body.is-envelope-locked { overflow: hidden; }
 }
 
 /* ============================================================
-   HERO — imagen a sangre completa con nombres al fondo
+   HERO — imagen a sangre completa con nombres en la parte superior
    ============================================================ */
 
 .hero {
@@ -133,11 +133,11 @@ body.is-envelope-locked { overflow: hidden; }
   z-index: 1;
   background: linear-gradient(
     180deg,
-    rgba(51, 52, 70, 0.15) 0%,
-    transparent 35%,
+    rgba(51, 52, 70, 0.75) 0%,
+    rgba(51, 52, 70, 0.5) 15%,
+    rgba(51, 52, 70, 0.2) 35%,
     transparent 55%,
-    rgba(51, 52, 70, 0.55) 85%,
-    rgba(51, 52, 70, 0.85) 100%
+    rgba(51, 52, 70, 0.35) 100%
   );
   pointer-events: none;
 }
@@ -146,7 +146,7 @@ body.is-envelope-locked { overflow: hidden; }
   position: absolute;
   left: 0;
   right: 0;
-  bottom: clamp(2rem, 6vh, 4rem);
+  top: calc(var(--nav-height) + clamp(1.5rem, 4vh, 3rem));
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -175,6 +175,15 @@ body.is-envelope-locked { overflow: hidden; }
   display: block;
   line-height: 1.05;
   text-transform: none;
+}
+
+/* Great Vibes: la mayúscula inicial es ornamental y puede leerse tímida.
+   Aumentamos la primera letra para que la Mayúscula sea evidente. */
+.hero__name::first-letter {
+  font-size: 1.35em;
+  font-weight: 500;
+  line-height: 0.9;
+  padding-right: 0.02em;
 }
 
 .hero__ampersand {
@@ -1197,6 +1206,13 @@ body.is-envelope-locked { overflow: hidden; }
 .footer__name {
   display: block;
   line-height: 1.05;
+}
+
+.footer__name::first-letter {
+  font-size: 1.35em;
+  font-weight: 500;
+  line-height: 0.9;
+  padding-right: 0.02em;
 }
 
 .footer__ampersand {
