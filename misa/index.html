@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nos casamos. Acompáñanos en la ceremonia religiosa.">
+  <meta property="og:title" content="Anderson & Mariana · Ceremonia religiosa">
+  <meta property="og:description" content="15 de agosto, 2026 · Ceremonia religiosa.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#333446">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <title>Anderson & Mariana · Ceremonia · 15.08.2026</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="https://unpkg.com/splitting@1/dist/splitting.css">
+
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/animations.css">
+
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://unpkg.com/splitting@1/dist/splitting.min.js" defer></script>
+
+  <style>
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transform-origin: left;
+      transform: scaleX(0);
+      z-index: 200;
+      transition: transform 0.1s linear;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    window.INVITE_TYPE = 'misa';
+    window.ASSET_BASE = '../';
+  </script>
+</head>
+
+<body>
+
+  <div class="envelope" id="envelope-overlay" role="button" tabindex="0" aria-label="Abrir invitación">
+    <div class="envelope__body">
+      <div class="envelope__front"></div>
+      <div class="envelope__flap"></div>
+      <img class="envelope__seal" src="../assets/images/sello.png" alt="">
+    </div>
+    <p class="envelope__hint">Toca para abrir</p>
+  </div>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <header id="main-nav" class="nav animate-nav" role="banner"></header>
+
+  <main id="main-content">
+
+    <section id="hero" class="hero" aria-label="Invitación de boda"></section>
+
+    <section id="save-date" class="save-date section" aria-label="Reserva la fecha"></section>
+
+    <section id="intro" class="intro-section section" aria-label="Bienvenida"></section>
+
+    <section id="historia" class="historia section" aria-label="Nuestra historia"></section>
+
+    <section id="ceremonia" class="ceremonia section" aria-label="Detalles de la ceremonia"></section>
+
+    <section id="galeria" class="galeria section" aria-label="Galería de fotos"></section>
+
+    <section id="rsvp" class="rsvp-section section" aria-label="Confirmación de asistencia"></section>
+
+  </main>
+
+  <footer id="footer" class="footer" aria-label="Cierre de la invitación"></footer>
+
+  <button
+    id="back-to-top"
+    class="back-to-top"
+    aria-label="Volver al inicio de la página"
+    title="Volver al inicio"
+  >
+    <i data-lucide="arrow-up" width="18" height="18"></i>
+  </button>
+
+  <script type="module" src="../scripts/main.js"></script>
+  <script type="module" src="../scripts/animations.js"></script>
+
+</body>
+</html>
