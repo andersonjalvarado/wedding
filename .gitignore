@@ -1,0 +1,13 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+_check*
+_hero.png
+_savedate.png
+_intro.png
+_ceremonia.png
+check.mjs
+check2.mjs
+check3.mjs
