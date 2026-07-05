@@ -556,6 +556,7 @@ function renderRSVP() {
           method="POST"
         >
           <input type="hidden" name="tipo_invitacion" value="${INVITE_TYPE}">
+          <input type="hidden" name="origen_pagina" value="${INVITE_TYPE === 'misa' ? 'Página de Misa' : 'Página de Reunión'}">
 
           <div class="form-group">
             <label class="form-label" for="rsvp-name">
@@ -603,6 +604,25 @@ function renderRSVP() {
                 No podré asistir
               </label>
             </div>
+          </div>
+
+          <div class="form-group" id="rsvp-guests-group" style="display:none">
+            <label class="form-label" for="rsvp-guests">
+              ¿Cuántos acompañantes traerás? <span aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form-input"
+              type="number"
+              id="rsvp-guests"
+              name="acompanantes"
+              min="1"
+              max="5"
+              placeholder="Máximo 5 acompañantes"
+            >
+            <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--color-text-light);line-height:1.5;display:flex;gap:0.4rem;align-items:flex-start">
+              <i data-lucide="info" width="14" height="14" style="flex-shrink:0;margin-top:0.1rem;color:var(--color-primary)"></i>
+              Con todo el cariño del mundo, les contamos que este evento tiene un ambiente adulto, por lo que pedimos, muy amablemente, que los bebés y niños menores de 5 años no asistan. ¡Gracias por su comprensión! 🤍
+            </p>
           </div>
 
           <div class="form-group">
@@ -708,6 +728,23 @@ function subtractMinutes(timeStr, mins) {
 function initRSVPForm() {
   const form = document.getElementById('rsvp-form');
   if (!form) return;
+
+  const guestsGroup = document.getElementById('rsvp-guests-group');
+  const guestsInput = document.getElementById('rsvp-guests');
+
+  form.querySelectorAll('input[name="attendance"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const withGuest = radio.value === 'Iré con acompañante';
+      guestsGroup.style.display = withGuest ? 'block' : 'none';
+      if (withGuest) {
+        guestsInput.required = true;
+        if (window.lucide) window.lucide.createIcons();
+      } else {
+        guestsInput.required = false;
+        guestsInput.value = '';
+      }
+    });
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
