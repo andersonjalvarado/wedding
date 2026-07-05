@@ -51,10 +51,10 @@ function initEnvelope() {
 function cornerOrnaments(pattern) {
   if (pattern === 'none' || !pattern) return '';
 
-  const tl = `<img class="corner-ornament corner-ornament--tl reveal-corner" src="${asset('assets/images/superior_izquierda.png')}" alt="" aria-hidden="true" loading="lazy">`;
-  const tr = `<img class="corner-ornament corner-ornament--tr reveal-corner" src="${asset('assets/images/superior_derecha.png')}" alt="" aria-hidden="true" loading="lazy">`;
-  const bl = `<img class="corner-ornament corner-ornament--bl reveal-corner" src="${asset('assets/images/inferior_izquierda.png')}" alt="" aria-hidden="true" loading="lazy">`;
-  const br = `<img class="corner-ornament corner-ornament--br reveal-corner" src="${asset('assets/images/inferior_derecha.png')}" alt="" aria-hidden="true" loading="lazy">`;
+  const tl = `<img class="corner-ornament corner-ornament--tl reveal-corner" src="${asset('assets/images/superior_izquierda.png')}" alt="" aria-hidden="true" loading="eager" decoding="async">`;
+  const tr = `<img class="corner-ornament corner-ornament--tr reveal-corner" src="${asset('assets/images/superior_derecha.png')}" alt="" aria-hidden="true" loading="eager" decoding="async">`;
+  const bl = `<img class="corner-ornament corner-ornament--bl reveal-corner" src="${asset('assets/images/inferior_izquierda.png')}" alt="" aria-hidden="true" loading="eager" decoding="async">`;
+  const br = `<img class="corner-ornament corner-ornament--br reveal-corner" src="${asset('assets/images/inferior_derecha.png')}" alt="" aria-hidden="true" loading="eager" decoding="async">`;
 
   switch (pattern) {
     case 'diag1': return tl + br;
